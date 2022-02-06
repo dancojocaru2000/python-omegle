@@ -15,6 +15,7 @@ _DISCONNECT_URL = "/disconnect"                     # POST id
 _TYPING_URL = "/typing"                             # POST id
 _STOPPED_TYPING_URL = "/stoppedtyping"              # POST id
 _EVENTS_URL = "/events"                             # POST id
+_CAPTCHA_URL = "/recaptcha"                         # POST id, response
 
 _RANDOM_ID_POOL = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
 

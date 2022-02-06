@@ -13,7 +13,8 @@ from python_omegle._common import (
     _STOPPED_TYPING_URL,
     _TYPING_URL,
     _DISCONNECT_URL,
-    _EVENTS_URL
+    _EVENTS_URL,
+    _CAPTCHA_URL
 )
 
 __all__ = []
@@ -87,6 +88,20 @@ class _AbstractChat(metaclass=abc.ABCMeta):
         response = requests.post(
             self._server_url + _SEND_URL,
             data={"id": self._chat_id, "msg": message}
+        )
+
+    def solve_recaptcha(self, response):
+        """Answer reCAPTCHA challenge
+
+        Arguments:
+            - response (str): The response reCAPTCHA returned after completing the challenge
+
+        Raise:
+            - PythonOmegleException if the HTTP request fails.
+        """
+        response = requests.post(
+            self._server_url + _CAPTCHA_URL,
+            data={"id": self._chat_id, "response": response}
         )
 
     def disconnect(self):

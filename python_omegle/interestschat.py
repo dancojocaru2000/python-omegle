@@ -133,7 +133,8 @@ class InterestsChat(_AbstractChat):
                 pass
 
             elif event_type == "recaptchaRequired":
-                raise PythonOmegleException("ReCAPTCHA check required.")
+                sitekey = event[1]
+                self._events.put((ChatEvent.RECAPTCHA_REQUIRED, sitekey))
 
     @property
     def interests(self):
